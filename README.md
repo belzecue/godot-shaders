@@ -2,7 +2,7 @@
 
 ![project banner](./img/banner-shader-secrets.png)
 
-Godot Shaders is a repository of Free shaders, part of which we made for our course [Godot Shader Secrets](https://gdquest.mavenseed.com/courses/shader-secrets-learn-to-code-2d-and-3d-shaders-in-godot).
+Godot Shaders is a repository of Free shaders, part of which we made for our course [Godot Shader Secrets](https://gdquest.mavenseed.com/courses/godot-shader-secrets).
 
 ➡ Follow us on [Twitter](https://twitter.com/NathanGDQuest) and [YouTube](https://www.youtube.com/c/gdquest/) for free game creation tutorials, tips, and news! Get one of our [Godot game creation courses](https://gdquest.mavenseed.com/) to support our work on Free Software.
 
@@ -10,29 +10,42 @@ Godot Shaders is a repository of Free shaders, part of which we made for our cou
 
 ## The shaders
 
-Here's a list of available shaders:
+Here's a list of available shaders and demos.
+
+### 3D Shaders
+
+![Stylized fire shader](img/stylized-fire.png)
+
+- 3D dissolve
+- 3D outline
+- 3D shockwave
+- 3D stylized fire
+- Advanced toon shader
+- Force field
+- Stencil mask (impossible cube)
+- Stylized fire
+
+### 2D Shaders
+
+![2D water shader with light support](./img/water2d.png)
 
 - 2D baked-in-texture glow control
-- 2D glow
-- Stencil mask (impossible cube)
-- Advanced toon shader
-- Gaussian blur
 - 2D clouds: noise-based cloud shadows cast over the game world
 - 2D dissolve
-- 3D dissolve
-- Distortion (shockwave)
-- Inverted colors
+- 2D glow
 - 2D outline
-- 3D outline
-- Pointilism
+- 2D palette swap
 - 2D reflection
 - 2D water for side-scrolling games
 - 2D water in top-down view
 - 2D x-ray (masking)
-- Force field
-- 2D palette swap
 
-![2D water shader with light support](./img/water2d.png)
+### Screen shaders
+
+- Gaussian blur
+- Inverted colors
+- Pointilism
+- Screen distortion (2D shockwave)
 
 ## How to use
 
@@ -50,6 +63,10 @@ If you want to contribute to the project, for instance by fixing a bug or adding
 
 1. [Contributor guidelines](https://www.gdquest.com/docs/guidelines/contributing-to/gdquest-projects/).
 1. [GDScript style guide](https://www.gdquest.com/docs/guidelines/best-practices/godot-gdscript/)
+
+## Credits
+
+Stylized fire adapted from a Unity tutorial by [@minionsart](https://twitter.com/minionsart/).
 
 ## Licenses
 
