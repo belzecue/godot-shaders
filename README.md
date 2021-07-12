@@ -24,6 +24,13 @@ Here's a list of available shaders and demos.
 - Force field
 - Stencil mask (impossible cube)
 - Stylized fire
+- Stylized bottled liquid
+- Interactive snow
+- Unlit directional tint
+- Texture mixing methods
+- Stylized waterfall shader
+- Spherical mask shader
+- Particle bridge: process to canvas_item/spatial communication
 
 ### 2D Shaders
 
