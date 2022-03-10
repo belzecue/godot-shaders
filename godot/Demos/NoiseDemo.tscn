@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Shaders/random_noise.shader" type="Shader" id=1]
 [ext_resource path="res://Shaders/value_noise.shader" type="Shader" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Shaders/voronoi_noise.shader" type="Shader" id=4]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -33,7 +34,6 @@ uniform sampler2D simplex_noise : hint_black;
 void fragment() {
 	COLOR = vec4(texture(simplex_noise, UV).rgb, 1.0);
 }"
-custom_defines = ""
 
 [sub_resource type="OpenSimplexNoise" id=6]
 seed = 230
@@ -45,12 +45,8 @@ noise = SubResource( 6 )
 shader = SubResource( 5 )
 shader_param/simplex_noise = SubResource( 7 )
 
-[node name="NoiseDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="NoiseDemo" type="CanvasLayer"]
+script = ExtResource( 7 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 
@@ -63,10 +59,10 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer"]
-margin_left = 235.0
-margin_top = 5.0
-margin_right = 1685.0
-margin_bottom = 955.0
+margin_left = 310.0
+margin_top = 55.0
+margin_right = 1610.0
+margin_bottom = 905.0
 custom_constants/vseparation = 50
 custom_constants/hseparation = 50
 columns = 3
@@ -76,46 +72,43 @@ __meta__ = {
 
 [node name="RandomNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
 material = SubResource( 1 )
-margin_right = 450.0
-margin_bottom = 450.0
-rect_min_size = Vector2( 450, 450 )
+margin_right = 400.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 400, 400 )
 
 [node name="ValueNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
 material = SubResource( 2 )
-margin_left = 500.0
-margin_right = 950.0
-margin_bottom = 450.0
-rect_min_size = Vector2( 450, 450 )
+margin_left = 450.0
+margin_right = 850.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 400, 400 )
 
 [node name="PerlinNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
 material = SubResource( 3 )
-margin_left = 1000.0
-margin_right = 1450.0
-margin_bottom = 450.0
-rect_min_size = Vector2( 450, 450 )
+margin_left = 900.0
+margin_right = 1300.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 400, 400 )
 
 [node name="VoronoiNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
 material = SubResource( 4 )
-margin_top = 500.0
-margin_right = 450.0
-margin_bottom = 950.0
-rect_min_size = Vector2( 450, 450 )
+margin_top = 450.0
+margin_right = 400.0
+margin_bottom = 850.0
+rect_min_size = Vector2( 400, 400 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SimplexNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
 material = SubResource( 8 )
-margin_left = 500.0
-margin_top = 500.0
-margin_right = 950.0
-margin_bottom = 950.0
-rect_min_size = Vector2( 450, 450 )
+margin_left = 450.0
+margin_top = 450.0
+margin_right = 850.0
+margin_bottom = 850.0
+rect_min_size = Vector2( 400, 400 )
 
 [node name="DemoInterface" parent="." instance=ExtResource( 5 )]
 anchor_right = 0.0
 margin_right = 1920.0
 rect_min_size = Vector2( 0, 120 )
-text_bbcode = "Several types of random noise.
-
-Shader code and fantastic explanations provided by Gonkee (https://github.com/Gonkee/)"

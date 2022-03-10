@@ -1,14 +1,15 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Shaders/particle_bridge_spatial.shader" type="Shader" id=1]
 [ext_resource path="res://Shaders/particle_bridge_particle.shader" type="Shader" id=2]
 [ext_resource path="res://Shared/Demo3DEnvironmentDark.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/character_position = Vector3( 1.478, 0.706214, 16.8233 )
-shader_param/radius = 5.0
+shader_param/character_position = Vector3( 1.478, 0.706214, 0.751298 )
+shader_param/radius = 0.0
 shader_param/bridge_width_particles = 12
 shader_param/bridge_speed = 10.0
 shader_param/spacing = 0.3
@@ -61,9 +62,9 @@ size = Vector3( 0.3, 0.3, 0.3 )
 script/source = "extends Particles
 tool
 
-export var character_node : NodePath = \".\"
+export var character_node := NodePath()
 
-func _process(delta):
+func _process(_delta: float) -> void:
 	process_material.set_shader_param(\"character_position\", get_node(character_node).global_transform.origin)
 "
 
@@ -151,7 +152,8 @@ scale_curve = SubResource( 19 )
 [sub_resource type="CubeMesh" id=21]
 size = Vector3( 0.1, 0.1, 0.1 )
 
-[node name="Spatial" type="Spatial"]
+[node name="ParticleBridgeDemo" type="CanvasLayer"]
+script = ExtResource( 5 )
 
 [node name="BridgeParticles" type="Particles" parent="."]
 amount = 996
@@ -165,7 +167,7 @@ script = SubResource( 12 )
 character_node = NodePath("../Character")
 
 [node name="Character" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.478, 0.706214, 16.8233 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.478, 0.706214, 0.751298 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -294,7 +296,5 @@ process_material = SubResource( 20 )
 draw_pass_1 = SubResource( 21 )
 
 [node name="DemoInterface" parent="." instance=ExtResource( 4 )]
-text_bbcode = "Particle bridge!
-This demo shows how to communicate between a particle shader and a canvas_item/spatial shader."
 
 [editable path="Demo3DEnvironmentDark"]

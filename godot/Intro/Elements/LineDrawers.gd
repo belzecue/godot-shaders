@@ -2,7 +2,7 @@ extends Node2D
 
 export var LineDrawer: PackedScene
 
-onready var tween := $Tween
+onready var _tween: Tween = $Tween
 
 
 func setup(_vertex_positions: Array, _indices: Array, _culled_indices: Array) -> void:
@@ -10,13 +10,13 @@ func setup(_vertex_positions: Array, _indices: Array, _culled_indices: Array) ->
 		var i1: int = _indices[i]
 		var i2: int = _indices[i + 1]
 		var i3: int = _indices[i + 2]
-
+		
 		var v1: Vector2 = _vertex_positions[i1]
 		var v2: Vector2 = _vertex_positions[i2]
 		var v3: Vector2 = _vertex_positions[i3]
 
 		var line_drawer := LineDrawer.instance()
-		line_drawer.setup(tween, [v1, v2, v3], i1 in _culled_indices)
+		line_drawer.setup(_tween, [v1, v2, v3], i1 in _culled_indices)
 		add_child(line_drawer)
 
 
@@ -35,4 +35,4 @@ func do_cull() -> void:
 	for c in get_children():
 		if not c is Tween and c.will_cull:
 			c.do_cull()
-	yield(tween, "tween_all_completed")
+	yield(_tween, "tween_all_completed")
